@@ -97,7 +97,7 @@ export default function Hero() {
           className="space-y-8"
         >
           {/* Animated Title */}
-          <div className="relative h-20">
+          <div className="relative h-20 mb-20">
             <AnimatePresence mode="wait">
               <motion.h1
                 key={titleIndex}
