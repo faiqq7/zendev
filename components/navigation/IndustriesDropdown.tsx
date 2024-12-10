@@ -80,7 +80,7 @@ export default function IndustriesDropdown() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.2 }}
-            className="fixed left-1/2 -translate-x-1/2 mt-2 w-[90vw] max-w-[800px] backdrop-blur-md bg-white/90 rounded-2xl shadow-2xl border border-white/20 grid lg:grid-cols-[300px,1fr] overflow-hidden"
+            className="fixed left-1/2 -translate-x-1/2 mt-2 w-[90vw] max-w-[600px] backdrop-blur-md bg-white/90 rounded-2xl shadow-2xl border border-white/20 grid lg:grid-cols-[300px,1fr] overflow-hidden"
             style={{
               backgroundImage: 'radial-gradient(circle at top right, rgba(65, 189, 126, 0.05), transparent)',
             }}
