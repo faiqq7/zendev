@@ -25,7 +25,7 @@ export default function Navbar() {
           <div className="flex-shrink-0">
             <Link href="/" className="text-2xl font-bold">
               <span className="text-primary">Zen</span>
-              <span className="text-secondary">Dev</span>
+              <span className="text-secondary">Dev Co.</span>
             </Link>
           </div>
           

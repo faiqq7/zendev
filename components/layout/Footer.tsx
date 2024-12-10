@@ -23,7 +23,7 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <h3 className="text-2xl font-bold mb-4">
-              <span className="text-primary">Zen</span>Dev
+              <span className="text-primary">Zen</span>Dev Co.
             </h3>
             <p className="text-gray-300 mb-4">
               Transforming ideas into exceptional digital experiences.
@@ -70,7 +70,7 @@ export default function Footer() {
               <li className="flex items-center">
                 <Mail className="w-5 h-5 mr-2 text-primary" />
                 <a href="mailto:contact@zendev.com" className="text-gray-300 hover:text-primary transition-colors">
-                  contact@zendev.com
+                  contact@zendevcorporate.com
                 </a>
               </li>
               <li className="flex items-center">
@@ -93,7 +93,7 @@ export default function Footer() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-12 pt-8 border-t border-gray-700 text-center text-gray-400"
         >
-          <p>&copy; {new Date().getFullYear()} ZenDev. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} ZenDev Corporation. All rights reserved.</p>
         </motion.div>
       </div>
     </footer>
