@@ -5,9 +5,44 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { textReveal } from "../animations/variants";
 
+const FloatingElement = ({ delay, duration, size, color, left, top, blur }: any) => (
+  <motion.div
+    animate={{
+      y: [0, -20, 0],
+      opacity: [0.5, 1, 0.5],
+    }}
+    transition={{
+      duration,
+      repeat: Infinity,
+      repeatType: "reverse",
+      delay,
+    }}
+    className={`absolute ${left} ${top} w-${size} h-${size} rounded-full ${color} filter blur-${blur} mix-blend-multiply`}
+    style={{ zIndex: 0 }}
+  />
+);
+
+const GridPattern = () => (
+  <div className="absolute inset-0 overflow-hidden">
+    <div 
+      className="absolute inset-0 opacity-[0.03]"
+      style={{
+        backgroundImage: `
+          linear-gradient(90deg, #41bd7e 1px, transparent 0),
+          linear-gradient(180deg, #41bd7e 1px, transparent 0)
+        `,
+        backgroundSize: '40px 40px',
+      }}
+    />
+  </div>
+);
+
 export default function Hero() {
   const [titleIndex, setTitleIndex] = useState(0);
-  const titles = ["Your Innovation Hub💡", "Your Innovation Partners💡"];
+  const titles = [
+    { text: "Your Innovation Hub", emoji: "💡" },
+    { text: "Your Innovation Partners", emoji: "💡" }
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -17,15 +52,41 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-gray-50 to-white">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, #41bd7e10 1px, transparent 0)`,
-          backgroundSize: '40px 40px'
-        }} />
-        <div className="absolute inset-0 bg-gradient-radial from-white/0 via-white/80 to-white" />
-      </div>
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-white via-gray-50 to-white">
+      {/* Animated Background Elements */}
+      <GridPattern />
+      
+      {/* Floating Elements */}
+      <FloatingElement 
+        delay={0} 
+        duration={4} 
+        size="32" 
+        color="bg-primary/10" 
+        left="left-1/4" 
+        top="-top-16"
+        blur="xl"
+      />
+      <FloatingElement 
+        delay={1} 
+        duration={5} 
+        size="48" 
+        color="bg-secondary/10" 
+        left="right-1/3" 
+        top="top-32"
+        blur="2xl"
+      />
+      <FloatingElement 
+        delay={2} 
+        duration={6} 
+        size="40" 
+        color="bg-primary/5" 
+        left="left-1/3" 
+        top="bottom-32"
+        blur="xl"
+      />
+
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-radial from-white/0 via-white/80 to-white pointer-events-none" />
 
       {/* Content */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12 text-center">
@@ -35,32 +96,8 @@ export default function Hero() {
           variants={textReveal}
           className="space-y-8"
         >
-          {/* Floating Elements */}
-          <motion.div
-            animate={{
-              y: [0, -10, 0],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
-            className="absolute top-20 left-1/4 w-12 h-12 rounded-full bg-primary/10"
-          />
-          <motion.div
-            animate={{
-              y: [0, 10, 0],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
-            className="absolute bottom-20 right-1/4 w-8 h-8 rounded-full bg-secondary/10"
-          />
-
-          {/* Main Title */}
-          <div className="h-20 relative">
+          {/* Animated Title */}
+          <div className="relative h-20">
             <AnimatePresence mode="wait">
               <motion.h1
                 key={titleIndex}
@@ -68,38 +105,46 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
-                className="text-4xl md:text-6xl font-bold text-gray-900 absolute w-full"
+                className="text-4xl md:text-6xl font-bold absolute w-full flex items-center justify-center gap-2"
               >
-                {titles[titleIndex]}
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+                  {titles[titleIndex].text}
+                </span>
+                <span className="text-[#FFD700]">{titles[titleIndex].emoji}</span>
               </motion.h1>
             </AnimatePresence>
           </div>
 
-          {/* Description */}
-          <motion.p
-            variants={textReveal}
-            className="mt-6 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
-          >
-            Bridging global expertise with Asian innovation, we deliver premium quality solutions that won't break the bank. Operating across Eastern and Pacific time zones, we're your 24/7 innovation partners.
-          </motion.p>
-
-          {/* CTA Button */}
+          {/* Description with Gradient Border */}
           <motion.div
             variants={textReveal}
-            className="mt-8 flex justify-center gap-4"
+            className="relative mx-auto max-w-3xl p-8 rounded-2xl bg-white/50 backdrop-blur-sm border border-gradient"
+            style={{
+              backgroundImage: 'linear-gradient(to right, rgba(65, 189, 126, 0.1), rgba(29, 57, 83, 0.1))'
+            }}
+          >
+            <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+              Bridging global expertise with Asian innovation, we deliver premium quality solutions that won't break the bank. Operating across Eastern and Pacific time zones, we're your 24/7 innovation partners.
+            </p>
+          </motion.div>
+
+          {/* Animated CTA Button */}
+          <motion.div
+            variants={textReveal}
+            className="mt-12"
           >
             <motion.a
               href="#start"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="group inline-flex items-center gap-2 px-8 py-3 text-base font-medium rounded-md text-white bg-primary hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-primary/20"
+              className="group inline-flex items-center gap-2 px-8 py-4 text-lg font-medium rounded-full text-white bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-primary/20"
             >
               Get Started
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </motion.a>
           </motion.div>
 
-          {/* Stats */}
+          {/* Stats with Gradient Cards */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -111,15 +156,27 @@ export default function Hero() {
               { value: "200+", label: "Projects Delivered" },
               { value: "50+", label: "Global Clients" },
               { value: "24/7", label: "Support" },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">{stat.value}</div>
-                <div className="text-sm text-gray-600">{stat.label}</div>
-              </div>
+            ].map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                whileHover={{ scale: 1.05 }}
+                className="relative group"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl blur-xl transition-all group-hover:blur-2xl" />
+                <div className="relative bg-white/50 backdrop-blur-sm p-6 rounded-xl border border-gray-200">
+                  <div className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-2">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-gray-600">{stat.label}</div>
+                </div>
+              </motion.div>
             ))}
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Decorative Elements */}
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
     </section>
   );
 }

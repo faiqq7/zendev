@@ -77,3 +77,17 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.border-gradient {
+  position: relative;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(to right, #41bd7e, #1d3953) border-box;
+  border: 1px solid transparent;
+}
+
+.bg-grid-pattern {
+  background-size: 20px 20px;
+  background-image: 
+    linear-gradient(to right, rgba(65, 189, 126, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(65, 189, 126, 0.1) 1px, transparent 1px);
+}

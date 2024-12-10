@@ -6,6 +6,7 @@ import Services from "@/components/sections/Services";
 import Technologies from "@/components/sections/Technologies";
 import Values from "@/components/sections/Values";
 import EngagementModels from "@/components/sections/EngagementModels";
+import Industries from "@/components/sections/Industries";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Hero />
       <Problems />
       <Services />
+      <Industries/>
       <EngagementModels />
       <Technologies />
       <Values />

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import IndustriesDropdown from "../navigation/IndustriesDropdown";
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -28,8 +29,8 @@ export default function Navbar() {
             </Link>
           </div>
           
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+          <div className="hidden md:flex md:items-center">
+            <div className="ml-10 flex items-center space-x-4">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
@@ -39,6 +40,7 @@ export default function Navbar() {
                   {item.name}
                 </Link>
               ))}
+              <IndustriesDropdown />
             </div>
           </div>
           
