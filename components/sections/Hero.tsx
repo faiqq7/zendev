@@ -176,9 +176,7 @@ export default function Hero() {
                 whileHover={{ scale: 1.05 }}
                 className="relative group"
               >
-                <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#1d3953] via-[#3a5f73] to-[#41bd7e]">
-                  <div className="absolute inset-0 bg-dots opacity-20"></div>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl blur-xl transition-all group-hover:blur-2xl" />
                 <div className="relative bg-white/50 backdrop-blur-sm p-6 rounded-xl border border-gray-200">
                   <div className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-2">
                     {stat.value}
