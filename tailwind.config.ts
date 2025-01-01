@@ -64,6 +64,12 @@ const config: Config = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
+      backgroundImage: {
+        dots: `radial-gradient(circle, rgba(255, 255, 255, 0.3) 1px, transparent 1px)`,
+      },
+      spacing: {
+        dots: "10px 10px",
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],

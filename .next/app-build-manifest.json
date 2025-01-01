@@ -11,6 +11,11 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+    "/solutions/healthcare/patient-management/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/solutions/healthcare/patient-management/page.js"
+    ],
     "/solutions/expense-management/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",

@@ -13,7 +13,14 @@ const industries = [
     title: "Healthcare",
     icon: Heart,
     description: "Revolutionizing healthcare with innovative solutions",
-    solutions: []
+    solutions: [
+      {
+        id: "patient-management",
+        title: "Patient Management System",
+        description: "Transform your healthcare facility with our comprehensive patient management solution",
+        href: "/solutions/healthcare/patient-management"
+      }
+    ]
   },
   {
     id: "fintech",

@@ -5,7 +5,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { textReveal } from "../animations/variants";
 
-const FloatingElement = ({ delay, duration, size, color, left, top, blur }: any) => (
+const FloatingElement = ({
+  delay,
+  duration,
+  size,
+  color,
+  left,
+  top,
+  blur,
+}: any) => (
   <motion.div
     animate={{
       y: [0, -20, 0],
@@ -24,14 +32,14 @@ const FloatingElement = ({ delay, duration, size, color, left, top, blur }: any)
 
 const GridPattern = () => (
   <div className="absolute inset-0 overflow-hidden">
-    <div 
+    <div
       className="absolute inset-0 opacity-[0.03]"
       style={{
         backgroundImage: `
           linear-gradient(90deg, #41bd7e 1px, transparent 0),
           linear-gradient(180deg, #41bd7e 1px, transparent 0)
         `,
-        backgroundSize: '40px 40px',
+        backgroundSize: "40px 40px",
       }}
     />
   </div>
@@ -41,7 +49,7 @@ export default function Hero() {
   const [titleIndex, setTitleIndex] = useState(0);
   const titles = [
     { text: "Your Innovation Hub", emoji: "💡" },
-    { text: "Your Innovation Partners", emoji: "💡" }
+    { text: "Your Innovation Partners", emoji: "💡" },
   ];
 
   useEffect(() => {
@@ -52,35 +60,38 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-white via-gray-50 to-white">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-white via-gray-50 to-white"
+    >
       {/* Animated Background Elements */}
       <GridPattern />
-      
+
       {/* Floating Elements */}
-      <FloatingElement 
-        delay={0} 
-        duration={4} 
-        size="32" 
-        color="bg-primary/10" 
-        left="left-1/4" 
+      <FloatingElement
+        delay={0}
+        duration={4}
+        size="32"
+        color="bg-primary/10"
+        left="left-1/4"
         top="-top-16"
         blur="xl"
       />
-      <FloatingElement 
-        delay={1} 
-        duration={5} 
-        size="48" 
-        color="bg-secondary/10" 
-        left="right-1/3" 
+      <FloatingElement
+        delay={1}
+        duration={5}
+        size="48"
+        color="bg-secondary/10"
+        left="right-1/3"
         top="top-32"
         blur="2xl"
       />
-      <FloatingElement 
-        delay={2} 
-        duration={6} 
-        size="40" 
-        color="bg-primary/5" 
-        left="left-1/3" 
+      <FloatingElement
+        delay={2}
+        duration={6}
+        size="40"
+        color="bg-primary/5"
+        left="left-1/3"
         top="bottom-32"
         blur="xl"
       />
@@ -110,7 +121,9 @@ export default function Hero() {
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
                   {titles[titleIndex].text}
                 </span>
-                <span className="text-[#FFD700]">{titles[titleIndex].emoji}</span>
+                <span className="text-[#FFD700]">
+                  {titles[titleIndex].emoji}
+                </span>
               </motion.h1>
             </AnimatePresence>
           </div>
@@ -120,19 +133,20 @@ export default function Hero() {
             variants={textReveal}
             className="relative mx-auto max-w-3xl p-8 rounded-2xl bg-white/50 backdrop-blur-sm border border-gradient"
             style={{
-              backgroundImage: 'linear-gradient(to right, rgba(65, 189, 126, 0.1), rgba(29, 57, 83, 0.1))'
+              backgroundImage:
+                "linear-gradient(to right, rgba(65, 189, 126, 0.1), rgba(29, 57, 83, 0.1))",
             }}
           >
             <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-              Bridging global expertise with Asian innovation, we deliver premium quality solutions that won't break the bank. Operating across Eastern and Pacific time zones, we're your 24/7 innovation partners.
+              Bridging global expertise with Asian innovation, we deliver
+              premium quality solutions that won't break the bank. Operating
+              across Eastern and Pacific time zones, we're your 24/7 innovation
+              partners.
             </p>
           </motion.div>
 
           {/* Animated CTA Button */}
-          <motion.div
-            variants={textReveal}
-            className="mt-12"
-          >
+          <motion.div variants={textReveal} className="mt-12">
             <motion.a
               href="#start"
               whileHover={{ scale: 1.05 }}
@@ -162,7 +176,9 @@ export default function Hero() {
                 whileHover={{ scale: 1.05 }}
                 className="relative group"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl blur-xl transition-all group-hover:blur-2xl" />
+                <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#1d3953] via-[#3a5f73] to-[#41bd7e]">
+                  <div className="absolute inset-0 bg-dots opacity-20"></div>
+                </div>
                 <div className="relative bg-white/50 backdrop-blur-sm p-6 rounded-xl border border-gray-200">
                   <div className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-2">
                     {stat.value}
